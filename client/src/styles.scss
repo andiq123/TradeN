@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import "ngx-toastr/toastr";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.popup-animation {
+  animation: popup 800ms ease-in-out forwards;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  50% {
+    transform: translateY(1rem);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.pop-left {
+  animation: pop-left 800ms ease-in-out forwards;
+}
+
+@keyframes pop-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  50% {
+    transform: translateX(1rem);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

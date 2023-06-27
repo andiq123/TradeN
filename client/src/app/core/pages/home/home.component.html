@@ -1,0 +1,66 @@
+<div class="flex w-full h-full items-center justify-center gap-10">
+  <form class="w-fit p-10 rounded-xl shadow-xl bg-base-100">
+    <input
+      class="input input-bordered max-w-xs rounded-lg w-96"
+      type="text"
+      name="search"
+      placeholder="Cauta un anunt..."
+      [(ngModel)]="queryParams.title"
+      (input)="queryChanged()"
+    />
+  </form>
+  <app-add-publication
+    *ngIf="isLoggedIn"
+    [addButtonStyles]="true"
+  ></app-add-publication>
+</div>
+
+<div
+  class="bg-base-100 card lg:card-side shadow-xl my-5 hover:bg-base-200 p-5 items-center justify-center relative"
+  *ngFor="let publication of publications"
+  [ngClass]="{ 'cursor-pointer': publication.isAvailable }"
+  [routerLink]="
+    publication.isAvailable ? '/publications/' + publication.id : ''
+  "
+>
+  <div
+    class="absolute top-0 left-0 w-full h-full bg-base-300 opacity-30 rounded-lg pointer-events-none flex justify-center items-center"
+    *ngIf="!publication.isAvailable"
+  >
+    Schimb facut deja
+  </div>
+  <img
+    [src]="replaceIfAbsent(findMainPhoto(publication.photos))"
+    alt="Movie"
+    class="bg-cove bg-contain bg-no-repeat lg:h-44 lg:w-44 h-72 w-96 rounded-lg shadow-2xl hover:scale-105 transition-all duration-300"
+  />
+
+  <div class="card-body flex lg:flex-row flex-col justify-between">
+    <div>
+      <h2 class="card-title">{{ publication.title | titlecase }}</h2>
+      <p>{{ publication.publishDate | date }}</p>
+    </div>
+    <div class="r-0 flex flex-col justify-center items-center">
+      <p class="font-bold">Postat de:</p>
+      <div class="flex">
+        <div class="flex flex-col">
+          <figure class="mask mask-circle">
+            <img
+              [src]="replaceIfAbsent(publication.user.photoUrl)"
+              alt="Movie"
+              class="bg-contain bg-no-repeat h-14 w-14"
+            />
+          </figure>
+          <p class="font-bold">{{ publication.user.fullName }}</p>
+        </div>
+      </div>
+      <app-rating [rating]="publication.user.rating!"></app-rating>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="publications.length === 0">
+  <div class="bg-base-100 card lg:card-side shadow-xl my-5 p-10">
+    <p class="mx-auto">No publications found</p>
+  </div>
+</ng-container>

@@ -1,0 +1,22 @@
+<button
+  [ngClass]="{
+    btn: addButtonStyles,
+    'btn-primary': addButtonStyles,
+    'btn-wide': addButtonStyles
+  }"
+  (click)="open()"
+>
+  <ng-content select="div=[ng-content=open-button-content]"></ng-content>
+</button>
+<dialog
+  class="modal modal-bottom sm:modal-middle z-10"
+  [ngClass]="{ 'modal-open': isOpened }"
+>
+  <form method="dialog" class="modal-box">
+    <h3 class="font-bold text-lg">{{ title }}</h3>
+    <ng-content slot="modal-content"></ng-content>
+    <div class="modal-action my-0">
+      <button class="btn btn-wide mx-auto" (click)="close()">Close</button>
+    </div>
+  </form>
+</dialog>

@@ -1,0 +1,76 @@
+<div class="hero mt-10">
+  <div class="hero-content flex-col lg:flex-row-reverse items-start">
+    <div
+      class="text-center lg:text-left rounded-xl bg-base-100 p-10 shadow-2xl"
+    >
+      <div class="">
+        <h1 class="text-5xl font-bold">Register</h1>
+        <p class="py-6 text-xl bg-base-200 p-5 rounded-xl my-5">
+          Bine ai venit la pagina de înregistrare. Te rugăm să completezi
+          formularul de înregistrare pentru a-ți crea un cont nou.
+        </p>
+      </div>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        class="card-body w-96"
+      >
+        <app-custom-input
+          formControlName="username"
+          label="Username"
+        ></app-custom-input>
+
+        <app-custom-input
+          formControlName="email"
+          label="Email"
+        ></app-custom-input>
+
+        <app-custom-input
+          formControlName="fullName"
+          label="Full Name"
+        ></app-custom-input>
+
+        <app-custom-input
+          formControlName="location"
+          label="Location"
+        ></app-custom-input>
+
+        <app-custom-input
+          formControlName="phoneNumber"
+          label="Phone Number"
+        ></app-custom-input>
+
+        <app-custom-input
+          formControlName="password"
+          label="Password"
+          type="password"
+        ></app-custom-input>
+
+        <app-custom-input
+          formControlName="confirmPassword"
+          label="Confirm Password"
+          type="password"
+          [passwordsMisMatch]="
+            registerForm.errors && registerForm.errors!['misMatch']
+          "
+        ></app-custom-input>
+        <p *ngIf="registerForm.errors && registerForm.errors!['misMatch']">
+          miaw!
+        </p>
+
+        <div class="form-control mt-6">
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            class="btn btn-primary"
+          >
+            <span *ngIf="loading" class="loading loading-spinner"></span>
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

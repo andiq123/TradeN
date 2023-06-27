@@ -1,0 +1,75 @@
+<app-modal [title]="'Adauga oferta'" [addButtonStyles]="true">
+  <div ng-content="open-button-content" class="flex items-center gap-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+
+    Adauga Oferta!
+  </div>
+
+  <div ng-content="modal-content">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      <app-custom-input
+        label="Titlu"
+        formControlName="title"
+      ></app-custom-input>
+      <app-custom-input
+        label="Conținut"
+        [isTextArea]="true"
+        formControlName="content"
+      ></app-custom-input>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Adauga poze:</span>
+        </label>
+        <input
+          type="file"
+          class="file-input w-full max-w-xs"
+          (input)="onFileChange($event)"
+        />
+      </div>
+      <div
+        class="flex flex-wrap gap-3 bg-base-200 p-5 rounded-lg my-3"
+        *ngIf="photosToUpload.length > 0"
+      >
+        <div class="relative pop-left" *ngFor="let photo of photosToUpload">
+          <figure
+            class="rounded-3xl overflow-hidden relative"
+            (click)="selectMain(photo.id)"
+          >
+            <img
+              [src]="photo.url"
+              [alt]="photo.id"
+              class="bg-cover h-20"
+              [ngClass]="{ 'border-2 border-primary': photo.isMain }"
+            />
+          </figure>
+          <span
+            (click)="removePhoto(photo.photoId)"
+            class="bg-red-500 px-2 hover:bg-opacity-100 bg-opacity-50 h-fit w-fit cursor-pointer absolute -top-3 -right-3 rounded-full transition-all duration-300"
+            >X</span
+          >
+        </div>
+      </div>
+      <button
+        type="submit"
+        [disabled]="!createForm.valid"
+        class="btn btn-primary my-10 w-full"
+      >
+        <span *ngIf="loading" class="loading loading-spinner"></span>
+        Adauga
+      </button>
+    </form>
+  </div>
+</app-modal>

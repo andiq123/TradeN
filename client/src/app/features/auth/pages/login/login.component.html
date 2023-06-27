@@ -1,0 +1,43 @@
+<div class="hero mt-10">
+  <div class="hero-content flex-col lg:flex-row-reverse items-start">
+    <div
+      class="text-center lg:text-left rounded-xl bg-base-100 p-10 shadow-2xl"
+    >
+      <div class="">
+        <h1 class="text-5xl font-bold">Login</h1>
+        <p class="py-6 text-xl bg-base-200 p-5 rounded-xl my-5">
+          Te rugăm să introduci datele tale de autentificare pentru a continua.
+        </p>
+      </div>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="card-body w-96"
+      >
+        <app-custom-input
+          formControlName="username"
+          label="Username"
+        ></app-custom-input>
+        <app-custom-input
+          formControlName="password"
+          label="Password"
+          type="password"
+          [includeForgotPassword]="true"
+        ></app-custom-input>
+
+        <div class="form-control mt-6">
+          <button
+            type="submit"
+            [disabled]="!loginForm.valid"
+            class="btn btn-primary"
+          >
+            <span *ngIf="loading" class="loading loading-spinner"></span>
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

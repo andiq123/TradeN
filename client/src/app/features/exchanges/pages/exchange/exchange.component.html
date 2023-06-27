@@ -1,0 +1,39 @@
+<div class="container" *ngIf="exchange">
+  <h1 class="text-4xl font-bold mt-10 mb-5">Exchange Details</h1>
+  <div class="bg-base-100 shadow-xl rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">
+      {{ exchange.publication.title | titlecase }}
+    </h2>
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-4">
+        <div class="w-1/2">
+          <h3 class="text-lg font-semibold">Author:</h3>
+          <p>{{ exchange.author.fullName | titlecase }}</p>
+          <p>{{ exchange.author.email }}</p>
+          <p>{{ exchange.author.location }}</p>
+        </div>
+        <div class="w-1/2">
+          <h3 class="text-lg font-semibold">Offer User:</h3>
+          <p>{{ exchange.offerUser.fullName | titlecase }}</p>
+          <p>{{ exchange.offerUser.email }}</p>
+          <p>{{ exchange.offerUser.location }}</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Exchange Date:</h3>
+        <p>{{ exchange.exchangeDate | date }}</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">
+          Give Rating to
+          {{
+            authorIsWatching
+              ? (exchange.offerUser.fullName | titlecase)
+              : (exchange.author.fullName | titlecase)
+          }}
+        </h3>
+        <app-rating [rating]="3"></app-rating>
+      </div>
+    </div>
+  </div>
+</div>

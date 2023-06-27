@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-4xl font-bold mt-10 mb-5">List of Exchanges</h1>
+  <ul class="flex flex-wrap gap-6">
+    <li
+      *ngFor="let exchange of exchanges"
+      class="bg-base-100 shadow-lg rounded-lg p-6 flex-1 cursor-pointer"
+      [routerLink]="exchange.id"
+    >
+      <h2 class="text-2xl font-bold mb-4">
+        {{ exchange.publication.title | titlecase }}
+      </h2>
+      <div class="flex flex-col gap-2">
+        <p>
+          <span class="font-bold">Author: </span>
+          {{ exchange.author.fullName | titlecase }}
+        </p>
+        <p>
+          <span class="font-bold">Offer User: </span>
+          {{ exchange.offerUser.fullName | titlecase }}
+        </p>
+        <p>
+          <span class="font-bold">Exchange Date: </span>
+          {{ exchange.exchangeDate | date }}
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>

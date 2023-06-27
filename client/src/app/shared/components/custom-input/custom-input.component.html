@@ -1,0 +1,76 @@
+<div class="form-control">
+  <label class="label">
+    <span class="label-text">{{ label }}</span>
+  </label>
+  <input
+    *ngIf="!isTextArea"
+    [type]="type"
+    [placeholder]="label"
+    [formControl]="control"
+    class="input input-bordered"
+    [ngClass]="{
+      'input-error':
+        control.invalid && (control.dirty || control.touched),
+    }"
+  />
+
+  <textarea
+    *ngIf="isTextArea"
+    [placeholder]="label"
+    [formControl]="control"
+    class="textarea textarea-bordered"
+    [ngClass]="{
+      'input-error':
+        control.invalid && (control.dirty || control.touched),
+    }"
+  ></textarea>
+  <ng-container *ngIf="includeForgotPassword">
+    <label class="label">
+      <a href="#" class="label-text-alt link link-hover relative"
+        >Forgot password?</a
+      >
+    </label></ng-container
+  >
+
+  <ng-container *ngIf="control.invalid && (control.touched || control.touched)">
+    <div
+      class="popup-animation alert alert-error shadow-xl text-base-100 text-xs absolute opacity-90 w-fit"
+    >
+      <span *ngIf="control.errors!['required']">
+        Acest camp este obligatoriu
+      </span>
+      <span *ngIf="control.errors!['minlength']">
+        Mai trebuie sa pui
+        {{
+          control.errors!["minlength"].requiredLength -
+            control.errors!["minlength"].actualLength
+        }}
+        {{
+          control.errors!["minlength"].requiredLength -
+            control.errors!["minlength"].actualLength ===
+          1
+            ? "caracter"
+            : "caractere"
+        }}
+      </span>
+      <span *ngIf="control.errors!['maxlength']">
+        sterge
+        {{
+          control.errors!["maxlength"].actualLength -
+            control.errors!["maxlength"].requiredLength
+        }}
+        {{
+          control.errors!["maxlength"].actualLength -
+            control.errors!["maxlength"].requiredLength ===
+          1
+            ? "caracter"
+            : "caractere"
+        }}
+      </span>
+      <span *ngIf="control.errors!['email']"> Email invalid </span>
+      <span *ngIf="control.errors!['passwordsMisMatch']">
+        Parolele sunt diferite, trebuie sa fie la fel!
+      </span>
+    </div>
+  </ng-container>
+</div>
