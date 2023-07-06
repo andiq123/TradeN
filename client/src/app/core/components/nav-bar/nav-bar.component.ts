@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { AuthService } from 'src/app/features/auth/services/auth.service';
-import { IUser } from 'users/interfaces/user.interface';
+import { IUser } from 'src/app/features/users/interfaces/user.interface';
 import { ImageUtils } from 'src/app/shared/utils/image.utils';
 
 @Component({

@@ -4,17 +4,18 @@
       <a class="btn btn-ghost normal-case text-xl" routerLink="/home">TradeN</a>
     </div>
     <div class="flex-none" *ngIf="!(userLoggedIn$ | async)">
-      <a class="btn btn-ghost" routerLink="/auth/login">Login</a>
-      <a class="btn btn-ghost" routerLink="/auth/register">Register</a>
+      <a class="btn btn-ghost" routerLink="/auth/login">Logare</a>
+      <a class="btn btn-ghost" routerLink="/auth/register">Inregistrare</a>
     </div>
     <div class="flex-none" *ngIf="userLoggedIn$ | async as user">
+      <p class="font-semibold mr-2">{{ user.fullName }}</p>
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
             <img
               [ngSrc]="replaceIfAbsent(user.photoUrl)"
-              height="200"
-              width="200"
+              height="300"
+              width="300"
               priority
             />
           </div>
@@ -24,14 +25,14 @@
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a class="justify-between" routerLink="/users/profile"> Profile </a>
+            <a class="justify-between" routerLink="/users/profile"> Profil </a>
           </li>
           <li>
             <a class="justify-between" routerLink="/exchanges">
-              My exchanges
+              Schimburile Mele
             </a>
           </li>
-          <li><a (click)="logout()">Logout</a></li>
+          <li><a (click)="logout()">Iesire</a></li>
         </ul>
       </div>
     </div>

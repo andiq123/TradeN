@@ -11,7 +11,7 @@ using TradeNIdentity.cs.Data;
 namespace TradeNIdentity.cs.Migrations
 {
     [DbContext(typeof(TradeNIdentityDbContext))]
-    [Migration("20230621154000_initial")]
+    [Migration("20230705074904_initial")]
     partial class initial
     {
         /// <inheritdoc />

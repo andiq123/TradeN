@@ -79,6 +79,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       next: (data) => {
         this.publications = data;
       },
+      error: (err) => {
+        this.publications = [];
+      },
     });
   }
 

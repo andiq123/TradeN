@@ -1,5 +1,5 @@
 import { Base } from 'src/app/core/interfaces/base.interface';
-import { IUser } from '../../../../../users/interfaces/user.interface';
+import { IUser } from '../../users/interfaces/user.interface';
 import { IPhoto } from './photo.interface';
 
 export interface IOffer extends Base {
@@ -10,4 +10,5 @@ export interface IOffer extends Base {
   user: IUser;
   photos?: IPhoto[];
   publicationId: string;
+  rank: number;
 }

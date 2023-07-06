@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LoadingService } from './core/services/loading.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

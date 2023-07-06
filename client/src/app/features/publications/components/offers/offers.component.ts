@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import { OffersService } from '../../services/offers.service';
 import { IExchange } from 'src/app/features/exchanges/interfaces/exchange.interface';
 import { ExchangesService } from 'src/app/features/exchanges/services/exchanges.service';
+import { AiService } from 'src/app/features/open-ai-api/services/ai.service';
 
 @Component({
   selector: 'app-offers',
@@ -30,7 +31,10 @@ export class OffersComponent implements OnInit, OnDestroy {
     offerUserId: string;
   }>();
 
-  constructor(private offersService: OffersService) {}
+  constructor(
+    private offersService: OffersService,
+    private aiService: AiService
+  ) {}
 
   ngOnInit(): void {
     this.populateOffers();
@@ -41,12 +45,17 @@ export class OffersComponent implements OnInit, OnDestroy {
       })
     );
   }
+  reorderOffers() {
+    this.aiService.reorderContent(this.publicationId).subscribe(() => {
+      this.populateOffers();
+    });
+  }
 
   populateOffers() {
     this.subscriptions.push(
       this.getOffers(this.isOwner, this.publicationId).subscribe({
         next: (offers: IOffer[]) => {
-          this.offers = offers;
+          this.offers = offers.sort((a, b) => b.rank - a.rank);
         },
         error: (err: any) => {
           this.offers = [];

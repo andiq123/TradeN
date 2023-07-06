@@ -9,9 +9,9 @@ public class TradeNContext : DbContext
     {
     }
 
-    DbSet<User> Users { get; init; }
-    DbSet<Offer> Offers { get; init; }
-    DbSet<Publication> Publications { get; init; }
-    DbSet<Photo> Photos { get; init; }
-    DbSet<Exchange> Exchanges { get; init; }
+    public DbSet<User> Users { get; init; }
+    public DbSet<Offer> Offers { get; init; }
+    public DbSet<Publication> Publications { get; init; }
+    public DbSet<Photo> Photos { get; init; }
+    public DbSet<Exchange> Exchanges { get; init; }
 }

@@ -1,4 +1,5 @@
 using System.Reflection;
+using Application.Features.AI;
 using Application.Features.Exchanges;
 using Application.Features.Offers;
 using Application.Features.Publications;
@@ -14,6 +15,7 @@ public static class DependencyInjection
         services.AddScoped<PublicationService>();
         services.AddScoped<OffersService>();
         services.AddScoped<ExchangeService>();
+        services.AddScoped<AiService>();
         return services;
     }
 }

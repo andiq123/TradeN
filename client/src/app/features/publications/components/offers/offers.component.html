@@ -12,26 +12,48 @@
   </p>
 
   <div class="max-h-96 overflow-y-auto" *ngIf="offers.length > 0">
+    <button
+      class="btn btn-success"
+      (click)="reorderOffers()"
+      *ngIf="isOwner"
+      [disabled]="offers[1].rank"
+    >
+      Reordoneaza cu AI
+    </button>
     <div
-      *ngFor="let ofer of offers"
+      *ngFor="let ofer of offers; let i = index"
       class="flex flex-col gap-3 p-5 bg-base-200 rounded-lg my-2"
     >
       <div class="flex flex-wrap justify-between gap-3 items-start">
         <div class="flex flex-col">
-          <div class="bg-base-100 rounded-lg flex flex-col gap-5 p-5">
-            <p class="font-bold text-center">{{ ofer.title | titlecase }}</p>
-            <p class="text-center">{{ ofer.content | titlecase }}</p>
+          <div class="bg-base-100 rounded-lg flex gap-5 p-5 relative">
+            <div
+              class="bg-green-200 h-fit p-5 rounded-xl absolute -top-5 -left-5 opacity-70"
+              *ngIf="ofer.rank && i == 0"
+            >
+              Best Offer
+            </div>
+            <div class="flex flex-col">
+              <p class="font-bold text-center">{{ ofer.title | titlecase }}</p>
+              <p class="text-center">{{ ofer.content | titlecase }}</p>
+            </div>
+
+            <div
+              class="flex flex-col items-center justify-center p-3 bg-base-200 rounded-xl cursor-pointer"
+              routerLink="/users/{{ ofer.user.id }}"
+            >
+              <img
+                [src]="ofer.user.photoUrl"
+                [alt]="ofer.user.fullName"
+                class="h-32 rounded-full object-cover"
+              />
+              <p class="font-bold">{{ ofer.user.fullName | titlecase }}</p>
+            </div>
           </div>
           <span class="font-light text-sm mt-2">{{
             ofer.offerDate | date
           }}</span>
         </div>
-
-        <app-user-info
-          *ngIf="isOwner"
-          [user]="ofer.user"
-          [fullVersion]="false"
-        ></app-user-info>
 
         <button
           class="btn btn-error"
@@ -55,7 +77,10 @@
         </button>
       </div>
 
-      <div class="bg-base-100 rounded-xl flex gap-3 p-2 w-fit">
+      <div
+        class="bg-base-100 rounded-xl flex gap-3 p-2 w-fit"
+        *ngIf="ofer.photos && ofer.photos.length > 0"
+      >
         <figure
           class="rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
           *ngFor="let photo of ofer.photos"
@@ -65,7 +90,7 @@
       </div>
 
       <button
-        class="btn btn-wide btn-success"
+        class="btn btn-wide btn-success mx-auto"
         *ngIf="isOwner"
         (click)="acceptOffer({ offerId: ofer.id, offerUserId: ofer.userId })"
       >

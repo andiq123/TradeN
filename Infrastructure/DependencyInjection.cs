@@ -1,3 +1,4 @@
+using Application.Contracts.Cloudinary;
 using Application.Contracts.Persistence;
 using Infrastructure.Data;
 using Infrastructure.Models;

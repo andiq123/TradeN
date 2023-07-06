@@ -36,7 +36,7 @@ public class AuthService : IAuthService
             throw new BadRequestException("Email already in use");
         }
 
-        var userId = Guid.NewGuid();
+        var userId = request.Id ?? Guid.NewGuid();
         var newUser = new IdentityUser()
         {
             Id = userId.ToString(),
@@ -51,7 +51,7 @@ public class AuthService : IAuthService
             var formattedErrors = isCreated.Errors.Select(x => x.Description);
             throw new BadRequestException("Unable to create user, errorList : " + string.Join(",", formattedErrors));
         }
-        
+
         await _userService.CreateUser(userId, request);
 
         var token = GenerateToken(userId.ToString(), request.Username);

@@ -23,4 +23,8 @@ public class RegisterRequest
     [Required]
     [MinLength(4)]
     public string PhoneNumber { get; init; }
+
+    public string? PhotoUrl { get; set; }
+
+    public Guid? Id { get; init; } = null;
 }

@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Application.Contracts.Cloudinary;
 using Application.Features.Publications;
 using Application.Features.Publications.Dtos;
 using CloudinaryDotNet;

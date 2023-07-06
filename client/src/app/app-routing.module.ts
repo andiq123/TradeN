@@ -26,7 +26,7 @@ const routes: Route[] = [
   {
     path: 'users',
     loadChildren: () =>
-      import('../../users/users.module').then((m) => m.UsersModule),
+      import('./features/users/users.module').then((m) => m.UsersModule),
     canActivate: [isLoggedGuard],
   },
   {

@@ -39,7 +39,7 @@ export class AddOfferComponent {
           validators: [
             Validators.required,
             Validators.minLength(5),
-            Validators.maxLength(100),
+            Validators.maxLength(200),
           ],
         }
       ),

@@ -36,6 +36,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Content = table.Column<string>(type: "TEXT", nullable: false),
+                    ContentResumed = table.Column<string>(type: "TEXT", nullable: true),
+                    DesiredItem = table.Column<string>(type: "TEXT", nullable: false),
                     IsAvailable = table.Column<bool>(type: "INTEGER", nullable: false),
                     PublishDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserId = table.Column<Guid>(type: "TEXT", nullable: false)
@@ -59,6 +61,7 @@ namespace Infrastructure.Migrations
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Content = table.Column<string>(type: "TEXT", nullable: false),
                     OfferDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Rank = table.Column<int>(type: "INTEGER", nullable: false),
                     PublicationId = table.Column<Guid>(type: "TEXT", nullable: false),
                     UserId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },

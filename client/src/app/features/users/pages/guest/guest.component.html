@@ -1,0 +1,31 @@
+<div class="px-10 flex gap-20" *ngIf="user">
+  <div class="w-full rounded-xl px-10 flex flex-col items-center gap-5 my-5">
+    <div class="p-10 bg-base-100 rounded-xl">
+      <img
+        class="bg-no-repeat h-72 object-cover rounded-lg shadow-xl"
+        [src]="replaceIfAbsent(user.photoUrl!)"
+      />
+    </div>
+  </div>
+  <div class="w-full rounded-xl bg-base-100 p-10">
+    <div class="mb-4">
+      <p class="text-lg font-semibold">Full Name:</p>
+      <p class="text-xl">{{ user.fullName | titlecase }}</p>
+    </div>
+    <div class="mb-4">
+      <p class="text-lg font-semibold">Location:</p>
+      <p class="text-xl">{{ user.location | titlecase }}</p>
+    </div>
+    <div class="mb-4">
+      <p class="text-lg font-semibold">Email:</p>
+      <p class="text-xl">{{ user.email | titlecase }}</p>
+    </div>
+    <div class="mb-4">
+      <p class="text-lg font-semibold">Phone Number:</p>
+      <p class="text-xl">{{ user.phoneNumber | titlecase }}</p>
+    </div>
+    <div>
+      <app-rating [rating]="user.rating!"></app-rating>
+    </div>
+  </div>
+</div>

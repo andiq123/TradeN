@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Application.Contracts.Cloudinary;
 using Application.Contracts.Persistence;
 using Application.Exceptions;
 using Application.Features.Publications.Dtos;
@@ -63,7 +64,7 @@ public class PublicationService
 
         var filter = request.Title is null || request.Title == ""
             ? (Expression<Func<Publication, bool>>)null
-            : x => x.Title.Contains(request.Title);
+            : x => x.Title.ToLower().Contains(request.Title.ToLower());
 
 
         return await _publicationRepository.ListAllAsync(filter, includes, orders, request.Descending);

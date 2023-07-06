@@ -1,0 +1,47 @@
+[
+  {
+    "Email": "andiq@gmail.com",
+    "Username": "andiq",
+    "FullName": "Andrei",
+    "Location": "Romania",
+    "PhoneNumber": "0729333394",
+    "Password": "qwerty",
+    "PhotoUrl": "https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/E12KS1G65-W0168RE00G7-133faf432639-512.jpeg"
+  },
+  {
+    "Email": "daniel@gmail.com",
+    "Username": "daniel",
+    "FullName": "Daniel Radu",
+    "Location": "Romania",
+    "PhoneNumber": "0723222293",
+    "Password": "qwerty",
+    "PhotoUrl": "https://img.freepik.com/free-photo/half-profile-image-handsome-young-caucasian-man-with-good-skin-brown-eyes-black-stylish-hair-stubble-posing-isolated-against-blank-wall-looking-front-him-smiling_343059-4560.jpg"
+  },
+  {
+    "Email": "albert@gmail.com",
+    "Username": "albert",
+    "FullName": "Albert Rodrigo",
+    "Location": "Romania",
+    "PhoneNumber": "0728383333",
+    "Password": "qwerty",
+    "PhotoUrl": "https://sb.kaleidousercontent.com/67418/1920x1281/0e9f02a048/christian-buehner-ditylc26zvi-unsplash.jpg"
+  },
+  {
+    "Email": "robert@gmail.com",
+    "Username": "robert",
+    "FullName": "Robert",
+    "Location": "Romania",
+    "PhoneNumber": "07859033233",
+    "Password": "qwerty",
+    "PhotoUrl": "https://images.squarespace-cdn.com/content/v1/5b7e685d8ab722146afd7529/1564600902218-403CMIW9V4G2UC13A25W/PP_01.jpg?format=1000w"
+  },
+  {
+    "Email": "mihai@gmail.com",
+    "Username": "mihai",
+    "FullName": "mihai",
+    "Location": "Romania",
+    "PhoneNumber": "0723123233",
+    "Password": "qwerty",
+    "PhotoUrl": "https://www.leisureopportunities.co.uk/images/imagesX/249542_405534.jpg"
+  }
+]

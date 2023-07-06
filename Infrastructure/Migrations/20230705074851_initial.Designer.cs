@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(TradeNContext))]
-    [Migration("20230621153952_initial")]
+    [Migration("20230705074851_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -70,6 +70,9 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PublicationId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Rank")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -125,6 +128,13 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ContentResumed")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DesiredItem")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

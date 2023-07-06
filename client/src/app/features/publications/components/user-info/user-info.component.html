@@ -3,12 +3,11 @@
   *ngIf="user"
 >
   <div class="hero-content justify-start flex-col lg:flex-row">
-    <figure class="mask mask-circle">
-      <img
-        [src]="replaceIfAbsent(user.photoUrl)"
-        class="bg-cove bg-contain bg-no-repeat h-20 w-20"
-      />
-    </figure>
+    <img
+      [src]="replaceIfAbsent(user.photoUrl)"
+      class="bg-cove bg-contain bg-no-repeat h-32 rounded-xl shadow-xl"
+    />
+
     <div
       class="flex flex-col justify-center p-5 pl-5 gap-3 bg-base-200 rounded-lg"
       *ngIf="fullVersion"
@@ -37,6 +36,8 @@
     *ngIf="fullVersion"
   ></app-rating>
   <div *ngIf="!fullVersion">
-    <p class="font-bold text-center">{{ user.fullName | titlecase }}</p>
+    <p class="font-bold">{{ user.fullName | titlecase }}</p>
+    <p class="font-semibold">{{ user.email | titlecase }}</p>
+    <p class="font-semibold">{{ user.phoneNumber }}</p>
   </div>
 </div>

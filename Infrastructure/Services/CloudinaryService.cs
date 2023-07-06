@@ -1,3 +1,4 @@
+using Application.Contracts.Cloudinary;
 using Application.Exceptions;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
@@ -40,10 +41,29 @@ public class CloudinaryService : ICloudinaryService
         return new UploadResult()
             { Id = Guid.NewGuid(), PhotoId = uploadResult.PublicId, Url = uploadResult.SecureUrl.AbsoluteUri };
     }
+    
+    public async Task<UploadResult> UploadBytesAsync(string name, Stream stream)
+    {
+        var uploadParams = new ImageUploadParams
+        {
+            File = new FileDescription(name, stream),
+            Transformation = new Transformation().Height(500).Width(500).Crop("fill").Gravity("face")
+        };
+
+        var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+
+        return new UploadResult()
+            { Id = Guid.NewGuid(), PhotoId = uploadResult.PublicId, Url = uploadResult.SecureUrl.AbsoluteUri };
+    }
 
     public async Task DeleteImageAsync(string publicId)
     {
         var deleteParams = new DeletionParams(publicId);
         await _cloudinary.DestroyAsync(deleteParams);
+    }
+
+    public async Task DeleteAllImagesAsync()
+    {
+        await _cloudinary.DeleteAllResourcesAsync();
     }
 }

@@ -1,6 +1,11 @@
 using System.Text.Json.Serialization;
 using API.Extensions;
 using API.Middleware;
+using API.Seed;
+using Infrastructure.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using TradeNIdentity.cs.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -11,6 +16,20 @@ var configuration = builder.Configuration;
     });
     builder.Services.AddServices(configuration);
 }
+
+//seeding data get the scope
+using var scope = builder.Services.BuildServiceProvider().CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    await Seeder.Seed(services);
+}
+catch (Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error occured during migration");
+}
+
 
 var app = builder.Build();
 

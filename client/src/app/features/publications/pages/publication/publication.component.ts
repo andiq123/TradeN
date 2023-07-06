@@ -55,7 +55,7 @@ export class PublicationComponent implements OnInit, OnDestroy {
     this.exchangesService
       .createExchange(createExchange)
       .subscribe((exchange) => {
-        console.log(exchange);
+        this.router.navigateByUrl('/exchanges/' + exchange.id);
       });
   }
 

@@ -4,6 +4,8 @@ public class Publication : BaseEntity
 {
     public string Title { get; set; }
     public string Content { get; set; }
+    public string? ContentResumed { get; set; }
+    public string DesiredItem { get; set; }
     public bool IsAvailable { get; set; }
     public DateTime PublishDate { get; set; }
 

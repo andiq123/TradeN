@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IUser } from 'users/interfaces/user.interface';
+import { IUser } from 'src/app/features/users/interfaces/user.interface';
 import { ImageUtils } from 'src/app/shared/utils/image.utils';
 
 @Component({

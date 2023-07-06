@@ -31,7 +31,7 @@ public class OffersService
         var includes = new List<Expression<Func<Offer, object>>>
         {
             p => p.User,
-            p=>p.Photos
+            p => p.Photos
         }.ToArray();
         return await _offersRepository.GetByIdAsync(id, includes);
     }
@@ -64,5 +64,15 @@ public class OffersService
         if (offer.UserId != userId)
             throw new NotFoundException(nameof(Offer), id);
         await _offersRepository.DeleteAsync(offer);
+    }
+
+    public async Task SetRank(IEnumerable<ReorderRequest> requests)
+    {
+        foreach (var request in requests)
+        {
+            var offer = await _offersRepository.GetByIdAsync(new Guid(request.OfferId));
+            offer.Rank = request.Rank;
+            await _offersRepository.UpdateAsync(offer);
+        }
     }
 }

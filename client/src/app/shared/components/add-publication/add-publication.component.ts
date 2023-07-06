@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { IPhoto } from 'src/app/features/publications/interfaces/photo.interface';
 import { IPublication } from 'src/app/features/publications/interfaces/publication.interface';
 import { PhotosService } from 'src/app/features/publications/services/photos.service';
@@ -31,11 +32,11 @@ export class AddPublicationComponent implements OnInit {
   }
 
   onSubmit() {
-    const { title, content } = this.createForm.value;
+    const { title, content, desiredItem } = this.createForm.value;
     this.loading = true;
     if (!this.isEditMode) {
       this.publicationsService
-        .createPublication(title, content, this.photosToUpload)
+        .createPublication(title, content, desiredItem, this.photosToUpload)
         .subscribe({
           next: () => {
             this.loading = false;
@@ -120,6 +121,16 @@ export class AddPublicationComponent implements OnInit {
       ),
       content: new FormControl(
         { value: this.publication?.content ?? '', disabled: false },
+        {
+          validators: [
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(200),
+          ],
+        }
+      ),
+      desiredItem: new FormControl(
+        { value: this.publication?.desiredItem ?? '', disabled: false },
         {
           validators: [
             Validators.required,

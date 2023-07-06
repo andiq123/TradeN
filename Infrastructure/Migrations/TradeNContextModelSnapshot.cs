@@ -67,6 +67,9 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PublicationId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Rank")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -122,6 +125,13 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ContentResumed")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DesiredItem")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment.development';
 import { IAuthResponse } from '../interfaces/iauth-response.interface';
 import { IRegisterRequest } from '../interfaces/register-request.interface';
 import { ILoginRequest } from '../interfaces/login-request.interface';
-import { IUser } from '../../../../../users/interfaces/user.interface';
+import { IUser } from '../../users/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',

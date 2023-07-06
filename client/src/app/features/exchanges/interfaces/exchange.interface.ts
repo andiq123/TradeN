@@ -1,4 +1,4 @@
-import { IUser } from 'users/interfaces/user.interface';
+import { IUser } from 'src/app/features/users/interfaces/user.interface';
 import { IPublication } from '../../publications/interfaces/publication.interface';
 
 export interface IExchange {

@@ -1,4 +1,4 @@
-import { Base } from '../../src/app/core/interfaces/base.interface';
+import { Base } from '../../../core/interfaces/base.interface';
 
 export interface IUser extends Base {
   username: string;
