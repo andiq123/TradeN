@@ -61,8 +61,7 @@ public class OffersService
     public async Task RemoveOffer(Guid id, Guid userId)
     {
         var offer = await _offersRepository.GetByIdAsync(id);
-        if (offer.UserId != userId)
-            throw new NotFoundException(nameof(Offer), id);
+
         await _offersRepository.DeleteAsync(offer);
     }
 

@@ -7,32 +7,66 @@
     <div class="flex flex-col gap-4">
       <div class="flex gap-4">
         <div class="w-1/2">
-          <h3 class="text-lg font-semibold">Author:</h3>
-          <p>{{ exchange.author.fullName | titlecase }}</p>
-          <p>{{ exchange.author.email }}</p>
-          <p>{{ exchange.author.location }}</p>
+          <h3 class="text-lg font-semibold">Autorul:</h3>
+          <p>
+            <span class="font-semibold">Nume: </span
+            >{{ exchange.author.fullName | titlecase }}
+          </p>
+          <p>
+            <span class="font-semibold">Email: </span
+            >{{ exchange.author.email }}
+          </p>
+          <p>
+            <span class="font-semibold">Locatie: </span
+            >{{ exchange.author.location }}
+          </p>
         </div>
-        <div class="w-1/2">
-          <h3 class="text-lg font-semibold">Offer User:</h3>
-          <p>{{ exchange.offerUser.fullName | titlecase }}</p>
-          <p>{{ exchange.offerUser.email }}</p>
-          <p>{{ exchange.offerUser.location }}</p>
+        <div class="p-10 bg-base-200 w-fit rounded-xl">
+          <h3 class="text-lg font-semibold">Beneficiarul:</h3>
+
+          <img
+            [src]="exchange.offerUser.photoUrl"
+            [alt]="exchange.offerUser.fullName"
+            class="bg-cover h-20 rounded-xl mb-2"
+          />
+
+          <p>
+            <span class="font-semibold">Nume: </span
+            >{{ exchange.offerUser.fullName | titlecase }}
+          </p>
+          <p>
+            <span class="font-semibold">Email: </span
+            >{{ exchange.offerUser.email }}
+          </p>
+          <p>
+            <span class="font-semibold">Locatie: </span
+            >{{ exchange.offerUser.location }}
+          </p>
         </div>
       </div>
       <div>
-        <h3 class="text-lg font-semibold">Exchange Date:</h3>
+        <h3 class="text-lg font-semibold">Data schimbului</h3>
         <p>{{ exchange.exchangeDate | date }}</p>
       </div>
       <div>
-        <h3 class="text-lg font-semibold">
-          Give Rating to
-          {{
-            authorIsWatching
-              ? (exchange.offerUser.fullName | titlecase)
-              : (exchange.author.fullName | titlecase)
-          }}
-        </h3>
-        <app-rating [rating]="3"></app-rating>
+        <ng-container *ngIf="!alreadyRated">
+          <h3 class="text-lg font-semibold">
+            Ofera o recenzie lui
+            {{
+              authorIsWatching
+                ? (exchange.offerUser.fullName | titlecase)
+                : (exchange.author.fullName | titlecase)
+            }}
+          </h3>
+          <app-rating
+            [rating]="
+              (authorIsWatching
+                ? exchange.offerUser.rating
+                : exchange.author.rating)!
+            "
+            (rateChange)="onRate($event)"
+          ></app-rating>
+        </ng-container>
       </div>
     </div>
   </div>

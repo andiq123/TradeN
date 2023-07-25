@@ -20,7 +20,8 @@ public class AiService
 
     public async Task<ResumeResponse> ResumeContent(string query)
     {
-        const string preText = "Fa un rezumat cu cuvinte cheie, in maxim 7-8 cuvinte:";
+        const string preText =
+            "Uita contextul trecut, Rezuma conținutul cu ajutorul câtorva cuvinte cheie (7-8 cuvinte formulate bine): \n";
         query = preText + query;
 
         var completionRequest = CompletionRequest(query);
@@ -61,6 +62,7 @@ public class AiService
         {
             Model = OpenAI_API.Models.Model.DavinciText,
             MaxTokens = 1024,
+            Temperature = 1.0,
             Prompt = query,
         };
         return completionRequest;

@@ -12,6 +12,7 @@ import { OffersService } from '../../services/offers.service';
 import { IExchange } from 'src/app/features/exchanges/interfaces/exchange.interface';
 import { ExchangesService } from 'src/app/features/exchanges/services/exchanges.service';
 import { AiService } from 'src/app/features/open-ai-api/services/ai.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-offers',
@@ -33,7 +34,8 @@ export class OffersComponent implements OnInit, OnDestroy {
 
   constructor(
     private offersService: OffersService,
-    private aiService: AiService
+    private aiService: AiService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -46,8 +48,10 @@ export class OffersComponent implements OnInit, OnDestroy {
     );
   }
   reorderOffers() {
+    this.toastrService.info('Reordonez ofertele folosind AI...');
     this.aiService.reorderContent(this.publicationId).subscribe(() => {
       this.populateOffers();
+      this.toastrService.success('Ofertele au fost reordone cu succes!');
     });
   }
 

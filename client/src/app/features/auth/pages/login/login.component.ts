@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       next: () => {
         this.loading = false;
         this.router.navigateByUrl('/home');
+        this.toastr.success('Autentificare reusita!');
       },
       error: (err: any) => {
         this.loading = false;

@@ -8,7 +8,7 @@ public class User : BaseEntity
     public string Location { get; init; }
     public string PhoneNumber { get; init; }
     public string? PhotoUrl { get; set; }
-    public float Rating { get; set; } = 5.0f;
+    public double Rating { get; set; } = 5.0f;
     public ICollection<Publication> Publications { get; init; }
     public ICollection<Offer> Offers { get; init; }
 }

@@ -11,11 +11,7 @@ export class AiService {
   constructor(private http: HttpClient) {}
 
   resumeContent(query: string) {
-    return this.http.post<string>(this.baseUrl, { query }).pipe(
-      tap((data) => {
-        console.log(data);
-      })
-    );
+    return this.http.post<string>(this.baseUrl, { query });
   }
 
   reorderContent(publicationId: string) {

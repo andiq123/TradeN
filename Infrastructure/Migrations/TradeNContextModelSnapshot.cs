@@ -15,7 +15,7 @@ namespace Infrastructure.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
 
             modelBuilder.Entity("Core.Entities.Exchange", b =>
                 {
@@ -155,6 +155,29 @@ namespace Infrastructure.Migrations
                     b.ToTable("Publications");
                 });
 
+            modelBuilder.Entity("Core.Entities.Rating", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ForPublicationId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ForUserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("FromUserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Rate")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("Core.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -180,7 +203,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Rating")
+                    b.Property<double>("Rating")
                         .HasColumnType("REAL");
 
                     b.Property<string>("Username")

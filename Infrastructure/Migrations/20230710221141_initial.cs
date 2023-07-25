@@ -12,6 +12,21 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ForUserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FromUserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ForPublicationId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Rate = table.Column<float>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -22,7 +37,7 @@ namespace Infrastructure.Migrations
                     Location = table.Column<string>(type: "TEXT", nullable: false),
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                     PhotoUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    Rating = table.Column<float>(type: "REAL", nullable: false)
+                    Rating = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,6 +217,9 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Photos");
+
+            migrationBuilder.DropTable(
+                name: "Ratings");
 
             migrationBuilder.DropTable(
                 name: "Offers");

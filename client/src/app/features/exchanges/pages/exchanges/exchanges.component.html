@@ -1,6 +1,12 @@
 <div class="container">
   <h1 class="text-4xl font-bold mt-10 mb-5">List of Exchanges</h1>
   <ul class="flex flex-wrap gap-6">
+    <p
+      *ngIf="exchanges.length === 0"
+      class="bg-base-100 rounded-lg p-6 mx-auto"
+    >
+      No exista schimburi la moment
+    </p>
     <li
       *ngFor="let exchange of exchanges"
       class="bg-base-100 shadow-lg rounded-lg p-6 flex-1 cursor-pointer"
@@ -15,11 +21,11 @@
           {{ exchange.author.fullName | titlecase }}
         </p>
         <p>
-          <span class="font-bold">Offer User: </span>
+          <span class="font-bold">Beneficiarul: </span>
           {{ exchange.offerUser.fullName | titlecase }}
         </p>
         <p>
-          <span class="font-bold">Exchange Date: </span>
+          <span class="font-bold">Data Schimbului: </span>
           {{ exchange.exchangeDate | date }}
         </p>
       </div>

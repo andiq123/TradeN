@@ -9,4 +9,5 @@ public interface IUserService
     Task<IReadOnlyList<User>> GetUsers();
     Task<User> GetUserById(Guid id);
     Task CreateUser(Guid id, RegisterRequest user);
+    Task SetRating(Guid id, double rating);
 }

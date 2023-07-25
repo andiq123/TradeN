@@ -1,9 +1,9 @@
 <div class="text-4xl font-bold mt-10 mb-5 ml-5">Informatii Anunt:</div>
 <div class="shadow-xl bg-base-100 rounded-lg p-5" *ngIf="publication">
   <div class="flex flex-col lg:flex-row gap-5">
-    <app-carousel [photos]="publication.photos!"></app-carousel>
+    <app-carousel [photos]="publication.photos!" class="flex-1"></app-carousel>
 
-    <div>
+    <div class="flex-1">
       <div class="flex justify-between w-full gap-10">
         <div>
           <h1 class="text-5xl font-bold">
@@ -13,7 +13,7 @@
             <span class="font-bold text-2xl">Descriere: </span>
             {{ publication.content }}
             <span class="font-bold text-2xl">Schimb desiderat:</span>
-            {{ publication.desiredItem }}
+            {{ publication.desiredItem | titlecase }}
           </p>
         </div>
 

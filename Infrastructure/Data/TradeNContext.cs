@@ -14,4 +14,5 @@ public class TradeNContext : DbContext
     public DbSet<Publication> Publications { get; init; }
     public DbSet<Photo> Photos { get; init; }
     public DbSet<Exchange> Exchanges { get; init; }
+    public DbSet<Rating> Ratings { get; set; }
 }

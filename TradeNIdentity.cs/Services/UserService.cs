@@ -37,4 +37,11 @@ public class UserService : IUserService
         userToCreate.Id = id;
         await _userRepository.AddAsync(userToCreate);
     }
+
+    public async Task SetRating(Guid id, double rating)
+    {
+        var user = await _userRepository.GetByIdAsync(id);
+        user.Rating = rating;
+        await _userRepository.UpdateAsync(user);
+    }
 }

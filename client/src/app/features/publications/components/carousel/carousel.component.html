@@ -1,20 +1,18 @@
-<div class="border">
-  <div class="photos flex w-1/2">
-    <div class="swiper-container" #swiperContainer>
-      <div class="swiper-wrapper">
-        <ng-container *ngFor="let image of photos">
-          <div class="swiper-slide">
-            <img
-              [src]="image.url"
-              [alt]="image"
-              class="w-full h-full object-cover"
-            />
-          </div>
-        </ng-container>
-      </div>
-      <div class="swiper-scrollbar"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+<div class="photos flex w-full">
+  <div class="swiper-container" #swiperContainer>
+    <div class="swiper-wrapper">
+      <ng-container *ngFor="let image of photos">
+        <div class="swiper-slide">
+          <img
+            [src]="image.url"
+            [alt]="image"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </ng-container>
     </div>
+    <div class="swiper-scrollbar"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </div>

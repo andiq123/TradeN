@@ -125,7 +125,7 @@ export class AddPublicationComponent implements OnInit {
           validators: [
             Validators.required,
             Validators.minLength(5),
-            Validators.maxLength(200),
+            Validators.maxLength(1500),
           ],
         }
       ),

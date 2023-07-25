@@ -58,7 +58,7 @@
               class="bg-contain bg-no-repeat h-14 w-14"
             />
           </figure>
-          <p class="font-bold">{{ publication.user.fullName }}</p>
+          <p class="font-bold">{{ publication.user.fullName | titlecase }}</p>
         </div>
       </div>
       <app-rating [rating]="publication.user.rating!"></app-rating>

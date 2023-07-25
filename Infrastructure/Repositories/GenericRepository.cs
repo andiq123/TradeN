@@ -35,6 +35,18 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return entity;
     }
 
+    public async Task<T?> GetFirstOrDefault(Expression<Func<T, bool>>? where = null)
+    {
+        IQueryable<T?> query = _context.Set<T>().AsQueryable();
+
+        if (where is not null)
+        {
+            query = query.Where(where!);
+        }
+
+        return await query.FirstOrDefaultAsync();
+    }
+
     public async Task<IReadOnlyList<T>> ListAllAsync(Expression<Func<T, bool>>? where = null,
         Expression<Func<T, object>>[]? includes = null,
         Expression<Func<T, object>>[]? ordersBy = null,
@@ -75,7 +87,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
         return entities;
     }
-
 
     public async Task<Guid> AddAsync(T entity)
     {

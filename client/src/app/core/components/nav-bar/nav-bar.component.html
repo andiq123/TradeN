@@ -1,14 +1,24 @@
 <div class="shadow-md m-2 rounded-lg bg-base-100 mx-auto py-3">
   <div class="navbar max-w-7xl mx-auto">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl" routerLink="/home">TradeN</a>
+      <img
+        src="assets/logo.png"
+        alt="logo"
+        class="object-cover w-20 h-20 hover:bg-base-200 hover:scale-105 transition-all duration-300 rounded-2xl"
+      />
+      <a
+        class="btn btn-ghost normal-case text-xl flex items-center"
+        routerLink="/home"
+      >
+        TradeN</a
+      >
     </div>
     <div class="flex-none" *ngIf="!(userLoggedIn$ | async)">
       <a class="btn btn-ghost" routerLink="/auth/login">Logare</a>
       <a class="btn btn-ghost" routerLink="/auth/register">Inregistrare</a>
     </div>
     <div class="flex-none" *ngIf="userLoggedIn$ | async as user">
-      <p class="font-semibold mr-2">{{ user.fullName }}</p>
+      <p class="font-semibold mr-2">{{ user.fullName | titlecase }}</p>
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
